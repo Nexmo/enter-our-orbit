@@ -13,6 +13,7 @@ module.exports = {
             await checkTwitchStatus()
             await initClient()
             client.on('message', onMessage)
+            client.on('ban', onBan)
         } catch(error) {
             reject(error)
         }
@@ -20,7 +21,6 @@ module.exports = {
 }
 
 const checkTwitchStatus = () => {
-    console.log('⚡ twitch:checkTwitchStatus')
     return new Promise(async (resolve, reject) => {
         const opts = {
             client_id: process.env.TWITCH_CLIENT_ID,
@@ -53,7 +53,6 @@ const checkTwitchStatus = () => {
 }
 
 const initClient = () => {
-    console.log('⚡ twitch:initClient')
     return new Promise((resolve, reject) => {
         client = new tmi.client({
             identity: {
@@ -70,14 +69,8 @@ const initClient = () => {
 }
 
 const onMessage = async (channel, tags, message, self) => {
-    console.log('⚡ twitch:onMessage')
-
-
-    if(new Date() > nextCheckLiveStatus) {
-        await checkTwitchStatus()
-    }
-
     if(self || tags.mod) return
+    if(new Date() > nextCheckLiveStatus) await checkTwitchStatus()
 
     await orbit.addActivity({
         activity: {
@@ -90,6 +83,27 @@ const onMessage = async (channel, tags, message, self) => {
             source: 'Twitch',
             source_host: `https://twitch.tv/${channel}`,
             username: tags.username
+        }
+    })
+}
+
+const onBan = async (channel, username, reason, userstate) => {
+    if(new Date() > nextCheckLiveStatus) await checkTwitchStatus()
+
+    await orbit.addActivity({
+        activity: {
+            title: 'Banned from Twitch Chat',
+            description: stream.title,
+            activity_type: 'twitch:banned',
+            key: `${stream.id}-${username}`
+        },
+        identity: {
+            source: 'Twitch',
+            source_host: `https://twitch.tv/${channel}`,
+            username: username
+        },
+        member: {
+            tags_to_add: 'Banned'
         }
     })
 }
