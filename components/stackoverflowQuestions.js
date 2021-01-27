@@ -32,7 +32,7 @@ const getNewQuestions = async (tag, date) => {
         const existing = await getExistingQuestions()
         const soQuestions = await getAllSOQuestions(tag, date)
         const newQuestions = soQuestions.filter(soItem => {
-            const matchingExistingItem = existing.find(orbitItem => orbitItem.attributes.key == `so-1-${soItem.question_id}`)
+            const matchingExistingItem = existing.find(orbitItem => orbitItem.attributes.key == `so-${soItem.question_id}`)
             return !matchingExistingItem
         })
         resolve(newQuestions)
