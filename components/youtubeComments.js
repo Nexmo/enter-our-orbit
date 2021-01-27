@@ -165,7 +165,7 @@ const addNewCommentsToOrbit = items => {
                 },
                 identity: {
                     source: 'YouTube',
-                    source_host: `https://www.youtube.com/channel/${item.authorChannelId}`,
+                    source_host: `https://www.youtube.com`,
                     username: item.authorChannelId
                 },
                 member: {

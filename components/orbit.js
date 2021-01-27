@@ -22,7 +22,6 @@ module.exports = {
         })
     },
     getActivities: (type) => {
-        // TODO: Paginate so we can get more than 500 activities
         return new Promise (async (resolve, reject) => {
             try {
                 const { data } = await axios({
