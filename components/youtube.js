@@ -6,10 +6,10 @@ const orbit = require('./orbit.js')
 const cron = require('node-cron')
 
 module.exports = {
-    init: async () => {
-        cron.schedule('* * * * *', () => {
-        console.log('running a task every minute');
-        });
+    init: () => {
+        cron.schedule('0 0 * * *', async () => {
+            await checkForNewComments()
+        })
     },
     getAllComments: async () => {
         return await getYouTubeComments()
