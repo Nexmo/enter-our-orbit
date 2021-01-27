@@ -20,7 +20,6 @@ module.exports = {
     }
 }
 
-
 const checkForNewQuestions = async (tag, date) => {
     const questions = await getNewQuestions(tag, date)
     console.log(`Identified ${questions.length} new StackOverflow questions`)
@@ -33,7 +32,7 @@ const getNewQuestions = async (tag, date) => {
         const existing = await getExistingQuestions()
         const soQuestions = await getAllSOQuestions(tag, date)
         const newQuestions = soQuestions.filter(soItem => {
-            const matchingExistingItem = existing.find(orbitItem => orbitItem.attributes.key == `so-${soItem.question_id}`)
+            const matchingExistingItem = existing.find(orbitItem => orbitItem.attributes.key == `so-1-${soItem.question_id}`)
             return !matchingExistingItem
         })
         resolve(newQuestions)
@@ -80,6 +79,10 @@ const getExistingQuestions = () => {
 
 const addNewQuestionsToOrbit = items => {
     return new Promise(async (resolve, reject) => {
+        if(items.length > 120) {
+            console.log('There are more than 120 items. We are just going to do the first 120 for now to respect the Orbit API Limits. Wait a minute between runs.')
+            items.length = 120
+        }
         for(let item of items) {
             await orbit.addActivity({
                 activity: {
