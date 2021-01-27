@@ -77,7 +77,7 @@ const onMessage = async (channel, tags, message, self) => {
             title: 'Participated in Twitch Chat',
             description: stream.title,
             activity_type: 'twitch:chat',
-            key: `${stream.id}-${tags.username}`
+            key: `twitch-chat-${stream.id}-${tags.username}`
         },
         identity: {
             source: 'Twitch',

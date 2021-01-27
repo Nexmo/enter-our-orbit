@@ -1,5 +1,5 @@
 {
-  "name": "orbit-ingest",
+  "name": "enter-our-orbit",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,7 +15,7 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "nedb-promises": "^4.1.1",
+    "node-cron": "^2.0.3",
     "querystring": "^0.2.0",
     "tmi.js": "^1.7.1"
   },

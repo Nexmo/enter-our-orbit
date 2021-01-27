@@ -20,5 +20,20 @@ module.exports = {
                 resolve(false)
             }
         })
+    },
+    getActivities: (type) => {
+        // TODO: Paginate so we can get more than 500 activities
+        return new Promise (async (resolve, reject) => {
+            try {
+                const { data } = await axios({
+                    url: `${baseURL}/${process.env.ORBIT_WS}/activities?type=${type}&items=500`,
+                    method: 'GET',
+                    headers: { Authorization: `Bearer ${process.env.ORBIT_KEY}` },
+                })
+                resolve(data)
+            } catch(error) {
+                reject(error)
+            }
+        })
     }
 }
