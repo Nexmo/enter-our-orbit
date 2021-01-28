@@ -6,17 +6,18 @@ const cron = require('node-cron')
 const so = new stackexchange({ version: 2.2 })
 
 module.exports = {
-    init: async () => {
+    init: async terms => {
         cron.schedule('0 1 * * *', async () => {
             const d = new Date()
             d.setHours(0, 0, 0, 0)
-            await checkForNewQuestions('nexmo', d)
-            await checkForNewQuestions('vonage', d)
+            for(let term of terms) {
+                await checkForNewQuestionsFromDate(term, d)
+            }
         })
     },
-    checkNewQuestionsFromDate: async date => {
+    checkNewQuestionsFromDate: async (term, date) => {
         const d = new Date(date)
-        await checkForNewQuestions('nexmo', d)
+        await checkForNewQuestions(term, d)
     }
 }
 
