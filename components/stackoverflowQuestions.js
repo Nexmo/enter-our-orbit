@@ -85,7 +85,7 @@ const expandQuestions = questions => {
 
 const getExtraDataFromSOQuestion = question => {
     return new Promise(async (resolve, reject) => {
-        const { data: html } = await axios.get(`https://stackoverflow.com/users/${question.owner.user_id}`)
+        const { data: html } = await axios.get(`https://stackoverflow.com/users/${question.owner.user_id}`).catch(e => reject(e))
         const $ = cheerio.load(html)
 
         let github, twitter
