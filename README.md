@@ -98,6 +98,7 @@ To set up the stackoverflowQuestions component:
 1. [Register a StackExchange App and note the app key](https://stackapps.com/apps/oauth/register)
 2. Add the following environment variables:
     * STACK_KEY - your app key
+    * STACK_TERMS - comma-separated tag list
 
 ### Potential Improvements
 

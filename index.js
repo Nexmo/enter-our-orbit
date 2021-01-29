@@ -9,6 +9,6 @@ const port = process.env.PORT || 3000
 
 twitchChat.init()
 youtubeComments.init()
-stackoverflowQuestions.init(['nexmo', 'vonage'])
+stackoverflowQuestions.init()
 
 app.listen(port, console.log('Express server started'))

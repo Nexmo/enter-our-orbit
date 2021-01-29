@@ -6,7 +6,8 @@ const cron = require('node-cron')
 const so = new stackexchange({ version: 2.2 })
 
 module.exports = {
-    init: async terms => {
+    init: async () => {
+        const terms = process.env.STACK_TERMS.split(',')
         cron.schedule('55 23 * * *', async () => {
             const d = new Date()
             d.setHours(0, 0, 0, 0)
