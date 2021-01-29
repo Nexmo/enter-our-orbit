@@ -89,7 +89,7 @@ To set up the youtubeComments component:
 
 ## Stack Overflow Questions
 
-The __stackoverflowQuestions__ component runs on a daily cron job. On a daily schedule, all questions are retrieved from Orbit and on Stackoverflow from a specified list of tags. New questions are added as Orbit activities.
+The __stackoverflowQuestions__ component runs on a daily cron job. On a daily schedule, all questions are retrieved from Orbit and on Stackoverflow from a specified list of tags. The component then visits each question owner's profile and also grabs their Twitter & GitHub usernames, if present. New questions are added as Orbit activities.
 
 Note that a question requires only one of these tags to be included in the results, not all.
 
