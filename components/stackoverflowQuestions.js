@@ -7,7 +7,7 @@ const so = new stackexchange({ version: 2.2 })
 
 module.exports = {
     init: async terms => {
-        cron.schedule('0 1 * * *', async () => {
+        cron.schedule('55 23 * * *', async () => {
             const d = new Date()
             d.setHours(0, 0, 0, 0)
             for(let term of terms) {
