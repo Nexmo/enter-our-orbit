@@ -100,7 +100,7 @@ const onBan = async (channel, username, reason, userstate) => {
             title: 'Banned from Twitch Chat',
             description: stream.title,
             activity_type: 'twitch:banned',
-            key: `${stream.id}-${username}`
+            key: `${stream.id}-${username}-banned`
         },
         identity: {
             source: 'Twitch',
