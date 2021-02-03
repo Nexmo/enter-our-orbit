@@ -92,6 +92,8 @@ const onMessage = async (channel, tags, message, self) => {
             url: `https://twitch.tv/${tags.username}`
         }
     })
+
+    console.log(`Adding ${tags.username}'s participation in "${stream.title}" Twitch chat.`)
 }
 
 const onBan = async (channel, username, reason, userstate) => {
@@ -113,4 +115,6 @@ const onBan = async (channel, username, reason, userstate) => {
             tags_to_add: 'Banned'
         }
     })
+
+    console.log(`Adding ${tags.username}'s ban from ${channel} Twitch chat.`)
 }

@@ -26,10 +26,10 @@ module.exports = {
 
 const checkForNewQuestions = async (tag, date) => {
     const questions = await getNewQuestions(tag, date)
-    console.log(`Identified ${questions.length} new StackOverflow questions`)
+    console.log(`Identified ${questions.length} new Stack Overflow questions`)
     const expandedQuestions = await expandQuestions(questions)
     await addNewQuestionsToOrbit(expandedQuestions)
-    console.log(`Added ${questions.length} questions to Orbit`)
+    console.log(`Added ${questions.length} Stack Overflow questions to Orbit`)
 }
 
 const getNewQuestions = async (tag, date) => {

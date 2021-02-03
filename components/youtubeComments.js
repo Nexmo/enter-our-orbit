@@ -19,7 +19,7 @@ module.exports = {
 const checkForNewComments = async () => {
     const comments = await getNewComments()
     await addNewCommentsToOrbit(comments)
-    console.log(`Added ${comments.length} comments to Orbit`)
+    console.log(`Added ${comments.length} YouTube comments to Orbit`)
 }
 
 const getNewComments = () => {
