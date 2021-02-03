@@ -75,6 +75,7 @@ const initClient = () => {
 
 const onMessage = async (channel, tags, message, self) => {
     if(self || tags.mod) return
+    if(tags.username.toLowerCase() == channel.toLowerCase()) return
     if(new Date() > nextCheckLiveStatus) await checkTwitchStatus()
 
     await orbit.addActivity({
