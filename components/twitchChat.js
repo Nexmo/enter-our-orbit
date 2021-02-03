@@ -78,7 +78,7 @@ const onMessage = async (channel, tags, message, self) => {
     if(tags.username.toLowerCase() == channel.toLowerCase()) return
     if(new Date() > nextCheckLiveStatus) await checkTwitchStatus()
 
-    await orbit.addActivity({
+    const resp = await orbit.addActivity({
         activity: {
             title: 'Participated in Twitch Chat',
             description: stream.title,
@@ -92,8 +92,7 @@ const onMessage = async (channel, tags, message, self) => {
             url: `https://twitch.tv/${tags.username}`
         }
     })
-
-    console.log(`Adding ${tags.username}'s participation in "${stream.title}" Twitch chat.`)
+    if(resp) console.log(`Adding ${tags.username}'s participation in "${stream.title}" Twitch chat.`)
 }
 
 const onBan = async (channel, username, reason, userstate) => {
