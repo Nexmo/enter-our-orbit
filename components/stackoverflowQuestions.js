@@ -130,7 +130,8 @@ const addNewQuestionsToOrbit = items => {
                 identity: {
                     source: 'StackOverflow',
                     source_host: `https://stackoverflow.com`,
-                    username: item.owner.user_id
+                    username: item.owner.user_id,
+                    url: `https://stackoverflow.com/users/${item.owner.user_id}`
                 },
                 member: {
                     name: item.owner.display_name,

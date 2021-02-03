@@ -87,7 +87,8 @@ const onMessage = async (channel, tags, message, self) => {
         identity: {
             source: 'Twitch',
             source_host: `https://twitch.tv/${channel}`,
-            username: tags.username
+            username: tags.username,
+            url: `https://twitch.tv/${tags.username}`
         }
     })
 }
