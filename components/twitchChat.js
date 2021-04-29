@@ -87,7 +87,7 @@ const onMessage = async (channel, tags, message, self) => {
         },
         identity: {
             source: 'Twitch',
-            source_host: `https://twitch.tv/${channel}`,
+            source_host: `twitch.tv`,
             username: tags.username,
             url: `https://twitch.tv/${tags.username}`
         }
@@ -107,7 +107,7 @@ const onBan = async (channel, username, reason, userstate) => {
         },
         identity: {
             source: 'Twitch',
-            source_host: `https://twitch.tv/${channel}`,
+            source_host: `twitch.tv`,
             username: username
         },
         member: {
