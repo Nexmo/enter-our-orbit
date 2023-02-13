@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "node-cron": "^2.0.3",
     "querystring": "^0.2.0",
-    "stackexchange": "^1.2.2",
+    "stackexchange": "^2.0.0",
     "tmi.js": "^1.7.1"
   },
   "devDependencies": {
